@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "word-guessing",
-      script: "server/index.js",
+      script: "server/app.js",
       cwd: __dirname,
       interpreter: "node",
       instances: 1,

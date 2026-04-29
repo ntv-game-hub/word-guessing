@@ -162,20 +162,36 @@ HOST=0.0.0.0 PORT=$PORT npm start
 ```text
 client/
   src/
-    App.tsx
+    AppShell.tsx
+    components/
+    screens/
+    constants.ts
+    types.ts
+    utils/
     main.tsx
     styles.css
 server/
-  index.js
+  app.js
+  config.js
+  socketHandlers.js
+  lib/
 shared/
   gameLogic.js
 tests/
   gameLogic.test.js
+docs/
+  ARCHITECTURE.md
+  EVENTS.md
 ecosystem.config.cjs
 vite.config.ts
 vitest.config.ts
 requirements.md
 ```
+
+More detail:
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Realtime Events](docs/EVENTS.md)
 
 ## Important Behavior
 

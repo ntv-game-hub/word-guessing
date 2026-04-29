@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "HOST=0.0.0.0 PORT=6670 node --watch server/index.js",
+    "dev:server": "HOST=0.0.0.0 PORT=6670 node --watch server/app.js",
     "dev:client": "VITE_SOCKET_URL=http://localhost:6670 vite",
     "build": "vite build",
-    "start": "node server/index.js",
+    "start": "node server/app.js",
     "pm2:start": "npm run build && pm2 start ecosystem.config.cjs",
     "pm2:restart": "npm run build && pm2 startOrRestart ecosystem.config.cjs --update-env",
     "pm2:stop": "pm2 stop word-guessing",
