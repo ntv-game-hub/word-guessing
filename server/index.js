@@ -31,6 +31,9 @@ const PORT = Number(process.env.PORT || 6670);
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
+  pingInterval: 25000,
+  pingTimeout: 60000,
+  transports: ["websocket"],
   cors: {
     origin: "*",
     methods: ["GET", "POST"]

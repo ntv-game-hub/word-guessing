@@ -241,7 +241,17 @@ function getLatestGuessTime(player: Player) {
 }
 
 function App() {
-  const socket = useMemo<Socket>(() => io(socketUrl), []);
+  const socket = useMemo<Socket>(
+    () =>
+      io(socketUrl, {
+        transports: ["websocket"],
+        reconnection: true,
+        reconnectionAttempts: Infinity,
+        reconnectionDelayMax: 5000,
+        timeout: 20000
+      }),
+    []
+  );
   const [screen, setScreen] = useState<Screen>("role");
   const [game, setGame] = useState<GameState | null>(null);
   const [hostToken, setHostToken] = useState("");
@@ -251,7 +261,10 @@ function App() {
   const [restoreTried, setRestoreTried] = useState(false);
 
   useEffect(() => {
-    const onConnect = () => setConnected(true);
+    const onConnect = () => {
+      setRestoreTried(false);
+      setConnected(true);
+    };
     const onDisconnect = () => setConnected(false);
     const onState = (state: GameState) => {
       setGame(state);
